@@ -1,0 +1,57 @@
+<p>forms works!</p>
+<form #loginform="ngForm" (ngSubmit)="loginUser(loginform.value)">
+    <input type="text" name="name" id="name" placeholder="enter  your name" ngModel>
+    <input type="password" name="password" id="password" placeholder="enter  your password" ngModel>
+    <button>Save</button>
+</form><br>
+
+
+<!-- suppose button is outside the form ,will it still show the result=>"YES" -->
+<button (click)="loginUser(loginform.value)">Outside Save</button>
+<br><br>
+
+
+<!-- validating form -->
+<h4>Form with Validations</h4>
+<form #form="ngForm" (ngSubmit)="User(form.value)">
+    <input type="text" required #name="ngModel" email  pattern="[a-z A-Z]+$" name="name" id="name" placeholder="enter  your name" ngModel>
+    <span *ngIf="name.invalid && name.touched"  required style="color: crimson;">enter valid name</span><br>
+    <input type="password" maxlength="3" required #password="ngModel" name="password" id="password" placeholder="enter  your password" ngModel>
+    
+    <span *ngIf="password.invalid && password.touched"  required style="color: crimson;">enter valid password</span><br>
+    <button >form Save</button>
+</form>
+
+
+<!-- REACTIVE FORMS -->
+<form [formGroup]="REACTIVEForm" (ngSubmit)="UserLogin()">
+    <input type="text" name="name" id="name" placeholder="enter  your name" ngModel formControlName="name"> 
+       <span *ngIf="name.invalid && name.touched"  required style="color: crimson;">enter valid name</span><br>
+
+
+    <input type="password" name="password" id="password" placeholder="enter  your password" ngModel formControlName="password">
+    <button>Save</button>
+</form><br>
+
+<!-- REACTIVE FORMS-2 -->
+<form [formGroup]="xform" (ngSubmit)="User_y()">
+    <input type="text" name="name" id="name" placeholder="enter  your name" ngModel formControlName="name">
+    <span *ngIf="name.invalid && name.touched"  required style="color: crimson;">enter valid name</span><br>
+
+    <input type="password" name="password" id="password" maxlength="5" placeholder="enter  your password" ngModel formControlName="password">
+    <span *ngIf="password.invalid && password.touched"  required style="color: crimson;">enter valid name</span><br>
+
+    <button [disabled]="xform.invalid" >Save</button>
+</form><br>
+
+<!-- directive -->
+<p appDirective>{{title}}</p>
+
+
+
+<!-- use of forms =># to send information to database BUT angular cannot connect to database
+#so, we send data to an API
+#api updates the database-->
+<!-- types of forms in angular=>@template driven form(done in component template) @reactive form (done in component class)-->
+<!-- angular,react,veu needs api to connect to database -->
+<!-- flow of forms in angilar=>template>class>service(api)>database -->

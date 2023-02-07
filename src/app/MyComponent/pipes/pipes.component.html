@@ -1,0 +1,26 @@
+<p>{{title | uppercase}}</p><!-- uppercasePipe -->
+<p>{{title  }}</p>
+<p>{{today | date :"medium"}}</p><!-- Datepipe -->
+<p>{{current(today)}}</p>
+<p>{{title | slice :2:6 }}</p><!-- parameterised pipes -->
+<p>{{user }}</p>
+<p>{{user | json}}</p>
+
+<!-- 2 pipes at same time -->
+<p>{{user | json | uppercase}}</p>
+
+<p>{{123.4321 | number:'4.1-2'}}</p>
+<!-- currency pipe -->
+<p>{{123| currency:'USD'}}</p> <p>{{123| currency:'GBP'}}</p>
+<!-- capitalize first letter of every word -->
+<p>{{title2 | titlecase}}</p>
+
+<!-- custom pipes -->
+<p> {{100 | customPipe:80}} </p>
+<!-- Pipes are used to transfer data from one format to another format. -->
+<!-- @ yes,we can create custom pipes -->
+<!-- command to create custom pipe => "ng g p pipe_file_name" -->
+<!-- how can we pass arguments?=>The arguments are added to the pipe using 
+    a colon (:) sign followed by the value of the argument.  -->
+    <!-- how can we pass multiple arguments?=>separate multiple values using colon':'' -->
+    
